@@ -11,5 +11,5 @@ installpkg --terse bro-2.4.1-i386-1.tgz
 echo "Installing Bro Slackware Package..."
 
 echo "Configuring Bro..."
-
+echo "export PATH=$PATH:/usr/local/bro/bin/" >> /etc/profile
 echo "Configuring Bro...DONE"
