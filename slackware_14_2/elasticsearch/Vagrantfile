@@ -65,39 +65,7 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-	#echo "Downloading Java Slack Package..."
-    #wget --quiet -r -nH -np --cut-dirs=4 -R index.html* http://ftp.slackware.com/pub/slackware/slackware-current/extra/java/
-	#echo -n "done."
-	#pushd java/
-	#echo -n "Downloading Java..."
-    #wget --quiet --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-i586.tar.gz
-	#echo "done."
-    #chmod +x java.SlackBuild 
-    #./java.SlackBuild
-	#sudo /sbin/installpkg --terse /tmp/jdk*
-	#popd
-    #rm -rf java/ /tmp/jdk*
-	echo "Downloading Java..."
-	wget --quiet https://www.dropbox.com/s/3rxx4eunlogcaku/jdk-8u101-i586-1.txz
-	echo "Downloading Java...DONE"
-	echo "Installing Java..."
-	sudo /sbin/installpkg --terse jdk-8u101-i586-1.txz
-	echo "Installing Java...DONE"
-	rm -rf jdk-8u101-i586-1.txz
-	echo "Downloading Elasticsearch..."
-	wget --quiet https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz
-	echo "Downloading Elasticsearch...DONE"
-	echo "Extracting Elasticsearch..."
-	tar xzf elasticsearch-2.4.1.tar.gz
-	echo "Extracting Elasticsearch...DONE"
-	echo "Configuring Elasticsearch..."
-	chown -R vagrant:users elasticsearch-2.4.1
-	rm 	-f elasticsearch-2.4.1.tar.gz
-	mkdir opt
-	mv elasticsearch-2.4.1 opt
-	ln -s opt/elasticsearch-2.4.1/bin/elasticsearch
-	echo "Configuring Elasticsearch...DONE"
-	rm -f ip_address.txt
-  SHELL
+  config.vm.provision "shell" do |s|
+    s.path "provision/setup.sh"
+  end
 end
