@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "elasticsearch" do |es|
+    es.vm.box = "crawford/slackware-14.2"
+    es.vm.network "private_network", ip: "192.168.99.20"
+    es.vm.provision "shell", path: "provision/setup-elasticsearch.sh"
+  end
+
+  config.vm.define "bronsm" do |bro|
+    bro.vm.box = "crawford/slackware-14.2"
+    bro.vm.network "private_network", ip: "192.168.99.10"
+    bro.vm.network "public_network"
+    bro.vm.provision "shell", path: "provision/setup-bro.sh"
+  end
+
+end
