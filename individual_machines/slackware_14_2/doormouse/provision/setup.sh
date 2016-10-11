@@ -23,10 +23,17 @@ wget --quiet https://doormouse.io/doormouse-platform.tar.gz
 tar xzf doormouse-platform.tar.gz 
 pushd doormouse-platform/src/
 python manage.py migrate
+expect <<'EXPECT_SCRIPT'
+set timeout 5
+spawn python manage.py createsuperuser
+expect "Username:" { send "vagrant\n" }
+expect "Email address:" { send "vagrant@foobarbaz99.com\n" }
+expect "Password:" { send "password\n" }
+expect "Password (again):" { send "password\n" }
+EXPECT_SCRIPT
 popd
 echo "Still need to manually do the following:"
 echo ""
 echo "pushd doormouse-platform/src/"
-echo "python manage.py createsuperuser"
 echo "python manage.py runserver 0.0.0.0:80"
 echo ""
