@@ -31,6 +31,9 @@ expect "Email address:" { send "vagrant@foobarbaz99.com\n" }
 expect "Password:" { send "password\n" }
 expect "Password (again):" { send "password\n" }
 EXPECT_SCRIPT
+sed -e "/^ALLOWED_HOSTS = \['localhost',$/s/^/#/g" -i doormouse_platform/settings.py
+sed -i "/^ *'127\.0\.0\.1']$/a ALLOWED_HOSTS = ['*']" doormouse_platform/settings.py
+sed -e "/^ *'127\.0\.0\.1']$/s/^/#/g" -i doormouse_platform/settings.py
 popd
 echo "Still need to manually do the following:"
 echo ""
