@@ -2,7 +2,9 @@
 
 This is a super quick and barebones way to get up an running with Splunk.
 
-**Note:** The resulting Splunk installation will come up with terrible default credentials.  Change them.  You have been warned.
+This is handy for an impromptu demo or maybe for a home lab.
+
+**Note:** The resulting Splunk installation will come up with terrible default credentials.  You should change them.  You have been warned.
 
 # What Prerequisites Do I Need?
 
@@ -34,3 +36,8 @@ Open a terminal, change to this directory, where the Vagrantfile is and:
     vagrant up
 
 After a few minutes, the terminal should tell you where to access your new Splunk installation.
+
+Default credentials are:
+ - **Username:** admin
+ - **Password:** password
+
