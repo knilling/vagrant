@@ -31,7 +31,7 @@ Depending on your environment, you will likely have to change which network inte
 # Then What?
 
 That's it!
-Open a terminal, change to this directory, where the Vagrantfile is and:
+Open a terminal, change to the directory where this Vagrantfile is and:
 
     vagrant up
 
