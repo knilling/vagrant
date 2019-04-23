@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
   end
   config.vm.provision "shell", inline: <<-SHELL
-    F=splunk-7.2.3-06d57c595b80-linux-2.6-x86_64.rpm
+    F=splunk.rpm
     chmod 744 "/vagrant/${F}"
     rpm -i "/vagrant/${F}"
 # default credentials
