@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
   end
   config.vm.provision "shell", inline: <<-SHELL
+    yum install -y net-tools
     F=splunk.rpm
     chmod 744 "/vagrant/${F}"
     rpm -i "/vagrant/${F}"
